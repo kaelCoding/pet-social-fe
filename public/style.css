@@ -1,0 +1,161 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --c-white: white;
+    --c-white-light: #f2f4f7;
+
+    --c-primary: #1877f2;
+    --c-secondary: #E4E6EB;
+
+    --c-text: #1c1e21;
+    --c-border: #dddfe2;
+
+    --c-shadow: #00000026;
+    --c-warning: #f02849;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--c-text);
+}
+
+input {
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--c-border);
+}
+
+.inp--light {
+    background-color: var(--c-white-light);
+}
+
+button {
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: var(--c-primary);
+    border: none;
+    font-weight: 500;
+    color: var(--c-white);
+    cursor: pointer;
+}
+
+.btn--light {
+    background-color: white;
+    color: var(--c-text);
+}
+
+.card {
+    box-shadow: 0 1px 5px var(--c-shadow);
+    border-radius: 6px;
+    padding: 12px;
+    background-color: var(--c-white);
+}
+
+.card + .card {
+    margin-top: 24px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.form {
+
+}
+
+.form input {
+    width: 100%;
+}
+
+.form button {
+    width: 100%;
+}
+
+.form .error {
+    color: var(--c-warning);
+    height: 24px;
+}
+
+.form label {
+    font-size: 17px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+a, .link {
+    color: var(--c-primary);
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+hr {
+    border-top: 1px solid var(--c-border);
+}
+
+.full {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.tab {
+    padding: 6px 12px 6px 0px;
+    cursor: pointer;
+}
+
+.tab-list-row {
+    display: flex;
+    flex-flow: row; 
+    align-items: center;
+    gap: 5px;
+}
+
+.tab-list-col {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+}
+
+.tab-icn {
+    width: 18px;
+    height: 18px;
+}
+
+.tab-text {
+    margin-left: 6px;
+    font-size: 16px;
+}
+
+.bi {
+    font-size: 22px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+
+.font-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.font-content {
+    font-size: 16px;
+}
