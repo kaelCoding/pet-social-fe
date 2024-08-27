@@ -3,6 +3,8 @@ import { ref } from "vue";
 import { save_token_local, get_auth_info } from "@/stores/auth";
 import { auth_login_api } from "@/services/auth";
 import { useRouter } from "vue-router";
+import { g_validation } from "@/modules/validation";
+import { setNotiMess } from "@/stores/noti";
 
 const router = useRouter();
 
@@ -11,15 +13,49 @@ const dataLogin = ref({
     password: ""
 })
 
-const login = async () => {
-    try {
-        const data = await auth_login_api(dataLogin.value)
-        save_token_local(data.token)
-        await get_auth_info()
+const errEmail = ref("");
+const checkEmail = () => {
+	errEmail.value = g_validation({
+        data: dataLogin.value.email,
+		label: "Email",
+		type: "EMAIL"
+	});
+	if(errEmail.value){
+		return false;
+	}else{
+		return true;
+	}
+}
 
-        router.push("/")
-    } catch (error) {
-        console.log('on login error ', error)
+const errPass = ref("")
+const checkPass = () => {
+    errPass.value = g_validation({
+        data: dataLogin.value.password,
+		label: "Password",
+		type: "PASSWORD"
+	});
+	if(errPass.value){
+		return false;
+	}else{
+		return true;
+	}
+}
+
+const login = async () => {
+    if(checkEmail() && checkPass()) {
+        try {
+            const data = await auth_login_api(dataLogin.value)
+            save_token_local(data.token)
+            await get_auth_info()
+
+            setNotiMess({
+                mess: "Login success",
+            })
+
+            router.push("/")
+        } catch (error) {
+            console.log('on login error ', error)
+        }
     }
 }
 
@@ -31,11 +67,11 @@ const login = async () => {
             <form class="card form" @submit.prevent="login">
                 <label>Email</label>
                 <input type="email" v-model="dataLogin.email" placeholder="Email address">
-                <div class="error"></div>
+                <div class="error">{{ errEmail }}</div>
             
                 <label>Password</label>
                 <input type="password" v-model="dataLogin.password" placeholder="Password">
-                <div class="error"></div>
+                <div class="error">{{ errPass }}</div>
 
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>

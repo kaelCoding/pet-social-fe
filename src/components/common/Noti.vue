@@ -55,9 +55,8 @@ const toNotifi = () => {
 	align-items: center;
 	padding: 0px 60px 0px 16px;
 
-	border: 1px solid #f5f5f5;
-	box-sizing: border-box;
-	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+	/* border: 1px solid #f5f5f5; */
+	box-shadow: 0px 1px 5px var(--c-shadow);
 }
 .noti-container:hover {
 	cursor: pointer;
